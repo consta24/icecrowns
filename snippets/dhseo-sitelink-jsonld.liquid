@@ -1,0 +1,23 @@
+{%- assign itemData = 'Cuban Link Chains!!!https://icecrowns.com/collections/cuban-link-chains???Track Your Order!!!https://icecrowns.com/tools/track-your-order???Customer Reviews!!!https://icecrowns.com/pages/all-reviews???Pendants!!!https://icecrowns.com/collections/pendants' -%}
+
+{%- if itemData -%}
+{% assign items = itemData | split: "???" %}
+{%- assign position = 0 -%}
+
+<!-- dhseo-json-ld-carousel -->
+<script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"ItemList",
+      "itemListElement":[{% for item in items %}{% assign lItem = item | split: "!!!" %}{%- assign position = position | plus: 1 -%}{
+          "@type":"ListItem",
+          "position": {{ position }},
+          "name": "{{ lItem[0] }}",
+          "url": "{{ lItem[1] }}"
+        }{% if position != 4 %},{% endif %}{% endfor %}
+      ]
+    }
+    </script>
+<!-- end-dhseo-json-ld-carousel -->
+
+{% endif %}

@@ -1,0 +1,43 @@
+
+{%- assign img_url = 'https://cdn.shopify.com/s/files/1/0649/1163/8776/files/1920x1080_90b8719c-ecde-4204-8c9c-05099fd4b580.png?v=1658302247' -%}
+{%- assign c_s_url = 'https://icecrowns.com' -%}
+
+<!-- dhseo-json-ld-store -->
+
+<!-- dhseo-website -->
+<script type="application/ld+json">
+{
+   "@context": "http://schema.org",
+   "@type": "WebSite",
+   "url": "https://{{ shop.domain }}/",
+   "potentialAction": {
+     "@type": "SearchAction",
+     "target": "https://{{ shop.domain }}/search?q={search_term_string}",
+     "query-input": "required name=search_term_string"
+   }
+}
+</script>
+<!-- end-dhseo-website -->
+
+<!-- dhseo-organization -->
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "Organization",
+	"url": "https://{{ shop.domain }}"
+
+    {%- unless img_url == blank -%}
+	,"logo": "{{ img_url | remove: "\" }}"
+  	{%- endunless -%}
+
+    {%- unless c_s_url == blank -%}
+	,"sameAs" : [
+		"{{ c_s_url }}"
+	]
+	{%- endunless -%}
+}
+</script>
+<!-- end-dhseo-organization -->
+
+
+<!-- End - dhseo-json-ld-store -->
